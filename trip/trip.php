@@ -9,11 +9,13 @@
 		var $credit;
 		var $startTime;
 		var $endTime;
-		var $fromName;
+		var $fromAddrView;
+		var $fromAddrName;
 		var $fromAddress;
 		var $fromLatitude;
 		var $fromLongitude;
-		var $destName;
+		var $destAddrView;
+		var $destAddrName;
 		var $destAddress;
 		var $destLatitude;
 		var $destLongitude;

@@ -31,11 +31,13 @@
 		$trip->endTime = $row["departure_date"]." ".$row["departure_time_last"];
 		$trip->passageCount = $row["seat_count"];
 		
-		$trip->fromName = $row["src_city"];
+		$trip->fromAddrView = $row["src_addr_view"];
+		$trip->fromAddrName = $row["src_addr_name"];
 		$trip->fromAddress = $row["src_addr"];
 		$trip->fromLongitude = $row["src_longitude"];
 		$trip->fromLatitude = $row["src_latitude"];
-		$trip->destName = $row["dst_city"];
+		$trip->destAddrView = $row["dst_addr_view"];
+		$trip->destAddrName = $row["dst_addr_name"];
 		$trip->destAddress = $row["dst_addr"];
 		$trip->destLongitude = $row["dst_longitude"];
 		$trip->destLatitude = $row["dst_latitude"];
