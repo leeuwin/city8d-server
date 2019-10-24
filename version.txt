@@ -1,3 +1,10 @@
+﻿version:1.0.2
+date: 2019-10-25
+author: lim
+content:
+1. 增加libcurl的支持；
+2. 增加sesion_key和openid的获取；
+
 version:1.0.1
 date: 2019-10-24
 author: lim
