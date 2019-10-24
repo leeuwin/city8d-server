@@ -60,6 +60,18 @@
         {
                 $str = substr($str, $dist_pos+strlen($dist), strlen($str)-strlen($dist));
         }
-        return $city.$dist.$str;
+		$addr=$city.$dist.$str;
+		/*
+		$addr=$dist.$str;
+		if(strlen($addr)>45)
+		{
+			$addr = substr($addr,0,45);
+		}
+		else if(strlen($addr)+strlen($city) <= 45)
+		{
+			$addr = $city.$addr;
+		}*/
+		
+        return $addr;
 	}
 ?>
