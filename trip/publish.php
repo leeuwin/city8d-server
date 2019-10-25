@@ -5,6 +5,8 @@
 	require '../common/region_trim.php';
 	require 'trip.php';
 	
+	//get token
+	$token = $_SERVER['HTTP_TOKEN'];
 	
 	// --connect database
 	$conn = new mysqli($servername, $username, $password, $dbname);
@@ -13,7 +15,22 @@
 		die();
 	}
 	$conn->set_charset('utf8');
-		
+
+	//check token
+	$sql = "SELECT id FROM TUser WHERE token='$token' AND status=1";
+	$result = $conn->query($sql);
+	$userID = -1;
+	if($result->num_rows == 1)
+	{
+		$row = $result->fetch_assoc();
+		$userID = $row['id'];
+	}
+	else
+	{
+		$conn->close();
+		echo "{\"errcode\":2,\"errmsg\":\"the request is unvalid cause of token not exist!\"}";
+		die();
+	}
 	$stmt = $conn->prepare("INSERT INTO TTrip(
 	type,
 	publisher,
@@ -74,7 +91,7 @@
 	$mid_district);
 	
 	$type = test_input($_POST['type']);
-	$publisher = 1;
+	$publisher = $userID;
 	$departure_date = test_input($_POST['date']);
 	$departure_time_first = test_input($_POST['startTime']);
 	$departure_time_last = test_input($_POST['endTime']);
