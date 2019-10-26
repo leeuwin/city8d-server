@@ -23,6 +23,14 @@
 		province='$province',
 		avatarUrl='$avatarUrl' WHERE token='$token'";
 	$conn->query($sql);
+	$sql="SELECT role FROM TUser WHERE token='$token'";
+	$result = $conn->query($sql);
+	$row = $result->fetch_assoc();
+	$role = $row["role"];
+	if(is_null($role))
+	{
+		$role = 2;
+	}
 	$conn->close();
 
 	$data->nickName=$nickName;
@@ -30,6 +38,7 @@
 	$data->gender=$gender;
 	$data->city=$city;
 	$data->province=$province;
+$data->role=$role;
 	$user->user=$data;
 	$res->data=$user;
 	$res->errcode=0;

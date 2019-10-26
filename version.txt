@@ -5,6 +5,7 @@ content:
 1. 增加libcurl的支持；
 2. 增加sesion_key和openid的获取；
 3. 增加用户登陆和用户信息的管理；
+4. 新增用户绑定脚本（不完善）
 
 version:1.0.1
 date: 2019-10-24
