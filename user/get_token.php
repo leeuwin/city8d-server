@@ -38,15 +38,18 @@
 		}
 		$sql="SELECT *FROM TUser WHERE openid='$session->openid' AND status=1";
 		$result = $conn->query($sql);
-		if($result->num_rows < 1)
+//echo "row=[$result->num_rows]";	
+	if($result->num_rows < 1)
 		{
 			//new user register
-			$sql="INSERT INTO TUser(token,session_key,openid) VALUES('$token','$session->session_key','$session->openid')";
+			$sql="INSERT INTO TUser(token,session_key,openid,role) VALUES('$token','$session->session_key','$session->openid',0)";
+//echo "sql=[$sql]";	
 			$result = $conn->query($sql);
 			if($result!==TRUE)
 			{
 				$res->errcode = 2;//insert new user failed!
 			}
+//echo "insert success!";	
 		}
 		else if($result->num_rows == 1)
 		{
