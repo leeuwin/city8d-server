@@ -1,4 +1,10 @@
-﻿version:1.0.2
+﻿version:1.0.3
+date: 2019-10-27
+author: lim
+content:
+1. 完善用户不同权限的认证机制（微信登录，绑定手机，实名认证，司机认证）；
+
+version:1.0.2
 date: 2019-10-25
 author: lim
 content:

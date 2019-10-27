@@ -11,6 +11,15 @@
 	{
 		die("db connect failed!");
 	}
+	
+	//update phone
+	$phone=$_POST['phone'];
+	$sql="UPDATE TUser SET 
+		phone='$phone',
+		role=2 WHERE token='$token'";
+	$conn->query($sql);
+	
+	//get user info
 	$sql="SELECT *FROM TUser WHERE token='$token' AND status=1";
 	$result = $conn->query($sql);
 	if($result->num_rows<1)
@@ -35,6 +44,9 @@ $userinfo->authStatus=null;
 	{
 		$errcode=2;
 	}
+	
+
+
 	$conn->close();
 
 	$user->user=$userinfo;

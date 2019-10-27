@@ -10,6 +10,16 @@
 	{
 		die("db connect failed!");
 	}
+	
+	$sql="SELECT role FROM TUser WHERE token='$token'";
+	$result = $conn->query($sql);
+	$row = $result->fetch_assoc();
+	$role = $row["role"];
+	if(is_null($role) || empty($role))
+	{
+		$role = 1;
+	}
+	
 	$nickName=$_POST['nickName'];
 	$avatarUrl=$_POST['avatarUrl'];
 	$gender=$_POST['gender'];
@@ -20,17 +30,11 @@
 		gender='$gender',
 		phone='10086',
 		city='$city',
+		role=$role,
+		credit=60,
 		province='$province',
 		avatarUrl='$avatarUrl' WHERE token='$token'";
 	$conn->query($sql);
-	$sql="SELECT role FROM TUser WHERE token='$token'";
-	$result = $conn->query($sql);
-	$row = $result->fetch_assoc();
-	$role = $row["role"];
-	if(is_null($role))
-	{
-		$role = 2;
-	}
 	$conn->close();
 
 	$data->nickName=$nickName;
@@ -39,6 +43,7 @@
 	$data->city=$city;
 	$data->province=$province;
 $data->role=$role;
+$data->authStatus=null;
 	$user->user=$data;
 	$res->data=$user;
 	$res->errcode=0;

@@ -15,12 +15,13 @@
 	$sql="UPDATE TUser SET 
 		name='$name',
 		IdCard='$cardID',
+		credit=credit+10,
 		role=3 WHERE token='$token'";
 	$conn->query($sql);
 	$conn->close();
 
 	$data->role=3;
-	
+$data->authStatus=null;
 	$user->user=$data;
 	$res->data=$user;
 	$res->errcode=0;
