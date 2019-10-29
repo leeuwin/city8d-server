@@ -55,8 +55,17 @@
 		{
 			if($row = $result->fetch_assoc()) 
 			{
-				$user->nick = $row["nick"];
-				$user->gender = $row["gender"];
+				$user->nickName=$row["nickName"];
+				$user->name=$row["name"];
+				$user->gender=$row["gender"];
+				$user->role=$row["role"];
+			$user->authStatus=null;
+				$user->avatarUrl=$row["avatarUrl"];
+				$user->city=$row["city"];
+				$user->province=$row["province"];
+				$user->phone=$row["phone"];
+				$user->credit=$row["credit"];
+
 			}
 			else
 			{
