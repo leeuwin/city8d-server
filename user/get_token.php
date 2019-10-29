@@ -42,7 +42,9 @@
 	if($result->num_rows < 1)
 		{
 			//new user register
-			$sql="INSERT INTO TUser(token,session_key,openid,role) VALUES('$token','$session->session_key','$session->openid',0)";
+			date_default_timezone_set("Asia/Shanghai");
+			$current_time=date("Y-m-d H:i:s");
+			$sql="INSERT INTO TUser(token,session_key,openid,role,register_date) VALUES('$token','$session->session_key','$session->openid',0,'$current_time')";
 //echo "sql=[$sql]";	
 			$result = $conn->query($sql);
 			if($result!==TRUE)
