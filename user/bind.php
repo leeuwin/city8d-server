@@ -11,10 +11,16 @@
 		die("db connect failed!");
 	}
 	$name=$_POST['name'];
-	$cardID=$_POST['idCard'];
+	$idCard=$_POST['idCard'];
+	$cardID=substr($idCard,6,8);
+        $birth_year=substr($cardID,0,4);
+        $birth_month=substr($cardID,4,2);
+        $birth_day=substr($cardID,6,2);
+        $birthday="$birth_year-$birth_month-$birth_day";
 	$sql="UPDATE TUser SET 
 		name='$name',
-		IdCard='$cardID',
+		IdCard='$idCard',
+		birthday='$birthday',
 		credit=credit+10,
 		role=3 WHERE token='$token'";
 	$conn->query($sql);
