@@ -1,4 +1,11 @@
-﻿version:1.0.3
+﻿version:1.0.4
+date: 2019-11-4
+author: lim
+content:
+1. 增加获取我的行程接口；
+2. 查看所有行程筛选时间，过期的行程将不可见；
+
+version:1.0.3
 date: 2019-10-27
 author: lim
 content:

@@ -14,12 +14,13 @@
 		die("连接失败: " . $conn->connect_error);
 	}
 	$conn->set_charset('utf8');
-	
-	date_default_timezone_set("Asia/Shanghai");
-	$today=date("Y-m-d");
-	$current_time=date("H:i:s");
+	//date_default_timezone_set("Asia/Shanghai");
+	//$today=date("Y-m-d");
+	//$current_time=date("H:i:s");
+	$token=$_SERVER['HTTP_TOKEN'];
 	// --select data
-	$sql = "SELECT id,publisher,departure_date,departure_time_first,departure_time_last,seat_count,src_addr_view,dst_addr_view,price FROM TTrip WHERE departure_date>='$today' and departure_time_last>'$current_time'";
+	$sql = "SELECT id,publisher,departure_date,departure_time_first,departure_time_last,seat_count,src_addr_view,dst_addr_view,price FROM TTrip a JOIN TUser b ON a.publisher=b.id WHERE b.token='$token'";
+	$sql = "SELECT a.id,a.publisher,a.departure_date,a.departure_time_first,a.departure_time_last,a.seat_count,a.src_addr_view,a.dst_addr_view,a.price FROM TTrip a JOIN TUser b ON a.publisher=b.id WHERE b.token='$token' ORDER BY a.departure_date DESC;";
 	$result = $conn->query($sql);
 	
 	while($row = $result->fetch_assoc() )
