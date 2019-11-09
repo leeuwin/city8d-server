@@ -37,7 +37,7 @@ $userinfo->authStatus=null;
 	}
 	$conn->close();
 
-	$user->user=$userinfo;
+	$user->userInfo=$userinfo;
 	$res->data=$user;
 	$res->errcode=$errcode;
 	echo json_encode($res);

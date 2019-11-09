@@ -15,6 +15,7 @@
 		var $destAddrView;
 		var $passageCount;
 		var $price;
+		var $isSelf=0;
 		
 	}
 	

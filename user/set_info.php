@@ -44,7 +44,7 @@
 	$data->province=$province;
 $data->role=$role;
 $data->authStatus=null;
-	$user->user=$data;
+	$user->userInfo=$data;
 	$res->data=$user;
 	$res->errcode=0;
 	echo json_encode($res);

@@ -1,4 +1,10 @@
-﻿version:1.0.4
+﻿version:1.0.5
+date: 2019-11-10
+author: lim
+content:
+1. 修改获取用户信息接口，使其字段与从微信接口获取一致；
+
+version:1.0.4
 date: 2019-11-4
 author: lim
 content:

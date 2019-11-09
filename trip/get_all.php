@@ -14,12 +14,20 @@
 		die("连接失败: " . $conn->connect_error);
 	}
 	$conn->set_charset('utf8');
-	
+	$departureDate=$_POST['departureDate'];
 	date_default_timezone_set("Asia/Shanghai");
 	$today=date("Y-m-d");
 	$current_time=date("H:i:s");
 	// --select data
-	$sql = "SELECT id,publisher,departure_date,departure_time_first,departure_time_last,seat_count,src_addr_view,dst_addr_view,price FROM TTrip WHERE departure_date>='$today' and departure_time_last>'$current_time'";
+	$sql = "SELECT id,publisher,departure_date,departure_time_first,departure_time_last,seat_count,src_addr_view,dst_addr_view,price FROM TTrip WHERE departure_date='$today' and departure_time_last>='$current_time' or departure_date>'$today'";
+
+	if(!empty($departureDate))
+	{
+		if($departureDate>$today)
+		{	$sql = "SELECT id,publisher,departure_date,departure_time_first,departure_time_last,seat_count,src_addr_view,dst_addr_view,price FROM TTrip WHERE departure_date='$departureDate'";}
+		else
+		{	$sql = "SELECT id,publisher,departure_date,departure_time_first,departure_time_last,seat_count,src_addr_view,dst_addr_view,price FROM TTrip WHERE departure_date='$departureDate' and departure_time_last>='$current_time'";}
+	}
 	$result = $conn->query($sql);
 	
 	while($row = $result->fetch_assoc() )

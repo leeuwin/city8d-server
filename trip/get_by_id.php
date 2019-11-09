@@ -27,7 +27,7 @@
 		$user->phone = '10086';
 		$user->credit = 90;
 		$user->avatarUrl='http://39.100.243.238/image/avatar.jpg';
-		$sql = "select nickName,phone,credit,avatarUrl from TUser where id=$user->userID";
+		$sql = "select nickName,phone,credit,avatarUrl,token from TUser where id=$user->userID";
 		$userResult = $conn->query($sql);
 		if($userResult->num_rows == 1)
 		{
@@ -36,6 +36,10 @@
 			$user->phone = $userRow["phone"];
 			$user->credit = $userRow["credit"];;
 			$user->avatarUrl=$userRow["avatarUrl"];
+			if($_SERVER["HTTP_TOKEN"]==$userRow["token"])
+			{
+				$trip->isSelf=1;
+			}
 		}
 
 		$trip->user = $user;
